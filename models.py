@@ -134,6 +134,6 @@ class RotAtte(Model):
         return score
 
     def predict(self, data):
-        score = - self.score_fn(data) * self.multiplier
+        score = - self.score(data) * self.multiplier
 
         return score.cpu().data.numpy()
