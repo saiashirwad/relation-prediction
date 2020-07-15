@@ -13,7 +13,6 @@ import numpy as np
 import copy
 import tqdm
 from livelossplot import PlotLosses
-from ranger import *
 
 import IPython
 
@@ -99,15 +98,6 @@ class Trainer(object):
                 lr=self.lr,
                 weight_decay=self.weight_decay,
             )
-        elif self.opt_method == "ranger":
-            if not lr:
-                self.optimizer = Ranger(
-                    self.model.parameters(), lr=self.lr, alpha=self.alpha)
-            else:
-                self.optimizer = Ranger(
-                    self.model.parameters(), lr=lr, alpha=self.alpha)
-        elif self.opt_method == "rangerva":
-            self.optimizer = RangerVA(self.model.parameters(), lr=lr)
         else:
             self.optimizer = optim.SGD(
                 self.model.parameters(),
