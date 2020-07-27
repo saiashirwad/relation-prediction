@@ -19,14 +19,15 @@ import IPython
 class Tester(object):
 
     def __init__(self, model = None, data_loader = None, use_gpu = True):
-        if os.name == "nt":
-            base_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "../release/Base_Windows.so"))
-        else:
-            try:
-                import google.colab
-                base_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "../release/Base_Colab.so"))
-            except Exception:
-                base_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "../release/Base_Linux.so"))
+        base_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "../release/Base_Windows.so"))
+        # if os.name == "nt":
+        #     base_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "../release/Base_Windows.so"))
+        # else:
+        #     try:
+        #         import google.colab
+        #         base_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "../release/Base_Colab.so"))
+        #     except Exception:
+        #         base_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "../release/Base_Linux.so"))
         self.lib = ctypes.cdll.LoadLibrary(base_file)
         self.lib.testHead.argtypes = [ctypes.c_void_p, ctypes.c_int64, ctypes.c_int64]
         self.lib.testTail.argtypes = [ctypes.c_void_p, ctypes.c_int64, ctypes.c_int64]

@@ -37,8 +37,8 @@ class TrainDataLoader(object):
 		filter_flag = True,
 		neg_ent = 1,
 		neg_rel = 0):
-		
-		base_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "../release/Base.so"))
+
+		base_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "../release/Base_Windows.so"))
 		self.lib = ctypes.cdll.LoadLibrary(base_file)
 		"""argtypes"""
 		self.lib.sampling.argtypes = [
