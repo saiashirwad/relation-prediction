@@ -25,7 +25,14 @@ class TestDataSampler(object):
 class TestDataLoader(object):
 
 	def __init__(self, in_path = "./", sampling_mode = 'link', type_constrain = True):
-		base_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "../release/Base.so"))
+		if os.name == "nt":
+			base_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "../release/Base_Windows.so"))
+		else:
+			try:
+				import google.colab
+				base_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "../release/Base_Colab.so"))
+			except Exception:
+				base_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "../release/Base_Linux.so"))
 		self.lib = ctypes.cdll.LoadLibrary(base_file)
 		"""for link prediction"""
 		self.lib.getHeadBatch.argtypes = [
