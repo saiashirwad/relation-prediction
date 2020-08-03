@@ -19,7 +19,7 @@ import IPython
 class Tester(object):
 
     def __init__(self, model = None, data_loader = None, use_gpu = True):
-        base_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "../release/Base_Windows.so"))
+        base_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "../release/Base_Linux.so"))
         # if os.name == "nt":
         #     base_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "../release/Base_Windows.so"))
         # else:

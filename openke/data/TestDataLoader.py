@@ -25,7 +25,7 @@ class TestDataSampler(object):
 class TestDataLoader(object):
 
 	def __init__(self, in_path = "./", sampling_mode = 'link', type_constrain = True):
-		base_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "../release/Base_Windows.so"))
+		base_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "../release/Base_Linux.so"))
 		print(base_file)
 		# if os.name == "nt":
 		# 	base_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "../release/Base_Windows.so"))

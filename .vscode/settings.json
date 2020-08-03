@@ -2,5 +2,5 @@
     "python.linting.pylintEnabled": true,
     "python.linting.flake8Enabled": false,
     "python.linting.enabled": true,
-    "python.pythonPath": "C:\\Users\\saias\\anaconda3\\python.exe"
+    "python.pythonPath": "/usr/bin/python3"
 }

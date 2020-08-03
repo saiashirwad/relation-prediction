@@ -44,3 +44,20 @@ test_dataloader = TestDataLoader("./benchmarks/FB15K237/", "link")
 
 n_ent = train_dataloader.get_ent_tot()
 n_rel = train_dataloader.get_rel_tot()
+
+in_dim = 50
+out_dim = 50
+
+print(train_dataloader.get_batch_size())
+print(batch_size)
+
+rotatte = RotAtte(n_ent, n_rel, in_dim, out_dim, facts, 1, 1, 20, batch_size=batch_size, device="cuda")
+model = NegativeSampling(model=rotatte, loss=SigmoidLoss(adv_temperature=2), batch_size=train_dataloader.get_batch_size(), regul_rate=0.0)
+
+trainer = Trainer(model=model, data_loader=train_dataloader, opt_method="adam")
+trainer.run(lr=2e-3, train_times=10)
+
+
+tester = Tester(model=rotatte, data_loader=test_dataloader, use_gpu=True)
+result = tester.run_link_prediction(type_constrain=False)
+print(result)
